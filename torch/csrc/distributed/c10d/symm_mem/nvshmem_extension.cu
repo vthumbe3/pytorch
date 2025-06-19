@@ -71,6 +71,11 @@ void initialize_nvshmem_with_store(
       "nvshmemx_init_attr failed");
 
   is_initialized = true;
+
+  // Print version
+  int major, minor;
+  ::nvshmem_info_get_version(&major, &minor);
+  LOG(INFO) << "NVSHMEM is available, version: " << major << "." << minor;
 }
 
 // Intializes the device state in CUmodule so that it’s able to perform NVSHMEM
